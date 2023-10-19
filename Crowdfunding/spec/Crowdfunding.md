@@ -25,7 +25,7 @@ and after it ends
 Graphically the specification can be represented in
 the following way.
 
-![Graphical spec](/Crowdfunding.png)
+![Graphical spec](./Crowdfunding.png)
 
 The present representation is based on actors
 (owner and funders), their possible actions and the
