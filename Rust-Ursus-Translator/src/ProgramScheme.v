@@ -622,7 +622,8 @@ match ast with
     (lError "Pat can't be in lValue", true)
 | Ident (name (* : string*) ) (arguments (* : list RustASTMultiverseX*) ) => 
     match arguments with 
-    | None => (lIdent name, false)
+    | None => 
+        (lIdent name, (String.eqb "require" name))
     | Some arguments => 
         let args_lices := (map RustASTMultiverseX2rValue arguments) 
         in
