@@ -94,8 +94,7 @@ Constructions which support have been added to Ursus, besides the ones mentioned
     
 -   solid piece of Blockchain and CallValue APIs
     
-
-  
+This contract is accompanied with the [high-level specification](./Crowdfunding/spec/Crowdfunding.md) that claims all the statements to be proven during the process of the formal veirication.  
 
 ### 4.  Library for Rust/Multiversx VM (/RustVM)
     
