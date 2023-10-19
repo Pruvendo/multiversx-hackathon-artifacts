@@ -1893,7 +1893,7 @@ Definition File2UrsusFile (rust_ast: json): string :=
             \n"UseLocal Definition _ := [" ++
             \n"    " ++ (String.concat (";" ++ \n"    ") localState_types_string) ++
             \n"]."++
-            \n"(* attributes of trait is" ++ trait_attrs ++ " *)" ++
+            (*\n"(* attributes of trait is" ++ trait_attrs ++ " *)" ++*)
             (print_rust_functions handled_functions) ++
             \n""++
             \n"EndContract." ++
