@@ -1,15 +1,7 @@
-(* Require Import UrsusEnvironment.Solidity.current.Environment. *)
 Require Import UrsusEnvironment.Rust.current.Environment.
-(* Require Import UrsusEnvironment.Solidity.current.LocalGenerator. *)
-(* Require Import UrsusContractCreator.BaseContracts.EverContract. *)
-
-
-
-
 
 Section SingleValueMapper.
 
-(* Variables Ledger LedgerMainState LedgerLocalState LedgerVMState LedgerMessagesAndEvents  : Type. *)
 Context {Ledger LedgerMainState LedgerLocalState LedgerVMState LedgerMessagesAndEvents  : Type}.
 Context `{ledgerClass: LedgerClass XBool Ledger LedgerMainState LedgerLocalState LedgerVMState LedgerMessagesAndEvents  }.
 Context {Lifr: listInfiniteFunRec_gen XList}.
@@ -34,15 +26,6 @@ Definition usvm_is_empty {T} (svm: ULValue (SingleValueMapper T))
   simpl in X.
   exact X.
 Defined.
-
-
-(* Definition svm_is_empty' {T} (svm: ULValue (SingleValueMapper T)) *)
-(*   : UExpression bool false := *)
-(*   // *)
-(*     (* new 'b : bool @ "b" := svm->is_empty(); *) *)
-(*     new 'b : bool @ "b" := (usvm_is_empty svm) ; *)
-(*     return_ ^{b} *)
-(* //. *)
 
 Section SvmSet.
 
@@ -102,8 +85,6 @@ Definition usvm_clear {T} {b} (svm: URValue (SingleValueMapper T) b) : URValue (
 Defined.
 
 Definition svm_clear' {T} {R}
-  (* {b} *)
-  (* (svm: URValue (SingleValueMapper T) b) *)
   (svm: ULValue (SingleValueMapper T))
   : UExpression R false.
   epose proof (// svm := {usvm_clear svm} //).
@@ -169,12 +150,8 @@ Notation "m '->svm_update(' f ')'" :=
         ,f constr
     ) : urust_scope.
 
-(* Check \\ {_}->svm_update1( _ ) \\. *)
-(* Check // {_}->svm_update2( fun x => // x := x // ) //. *)
-
 Section VecMapper.
 
-(* Variables Ledger LedgerMainState LedgerLocalState LedgerVMState LedgerMessagesAndEvents  : Type. *)
 Context {Ledger LedgerMainState LedgerLocalState LedgerVMState LedgerMessagesAndEvents  : Type}.
 Context `{ledgerClass: LedgerClass XBool Ledger LedgerMainState LedgerLocalState LedgerVMState LedgerMessagesAndEvents  }.
 Context {Lifr: listInfiniteFunRec_gen XList}.
@@ -233,7 +210,6 @@ Notation "m '->' 'vec_clear()'" := (vec_clear' m)
 
 Section UnorderedSetMapper.
 
-(* Variables Ledger LedgerMainState LedgerLocalState LedgerVMState LedgerMessagesAndEvents  : Type. *)
 Context {Ledger LedgerMainState LedgerLocalState LedgerVMState LedgerMessagesAndEvents  : Type}.
 Context `{ledgerClass: LedgerClass XBool Ledger LedgerMainState LedgerLocalState LedgerVMState LedgerMessagesAndEvents  }.
 Context {Lifr: listInfiniteFunRec_gen XList}.
@@ -283,9 +259,6 @@ Notation wrapURExpression := (@wrapURExpressionL Ledger LedgerMainState LedgerLo
 Notation wrapULExpression := (@wrapULExpressionL Ledger LedgerMainState LedgerLocalState LedgerVMState LedgerMessagesAndEvents   ledgerClass _ _ _ _ ).
 Notation ursus_call_with_args := (@ursus_call_with_argsL Ledger LedgerMainState LedgerLocalState LedgerVMState LedgerMessagesAndEvents   ledgerClass _ _  ).
 
-(* About ULtoRValue. *)
-(* Search "URto". *)
-
 Class HasClear (C: Type) := {
     clear_func :
     forall {R: Type},
@@ -293,14 +266,6 @@ Class HasClear (C: Type) := {
       UExpression R false
   }.
 
-(* Definition svm_clear' {T} {R} *)
-(*   (* {b} *) *)
-(*   (* (svm: URValue (SingleValueMapper T) b) *) *)
-(*   (svm: ULValue (SingleValueMapper T)) *)
-(*   : UExpression R false. *)
-(* Definition usm_clear' {T} {R} *)
-(*   (usm: ULValue (UnorderedSetMapper T)) *)
-(*   : UExpression R false. *)
 #[export]
 Instance HasClearSvm : forall T, HasClear (SingleValueMapper T).
 constructor.
@@ -327,5 +292,3 @@ End Classes.
 Notation "m '->clear()'" := (clear_func _ _ _ _ _ m)
                              (in custom ULValue at level 55,
                              m custom ULValue) : urust_scope.
-
-Notation BidUint := (XUBInteger 256).
