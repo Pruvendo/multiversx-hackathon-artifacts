@@ -1,0 +1,6 @@
+(coq.theory
+ (name RustExample)
+ (package rust-ursus) 
+)
+
+(include_subdirs qualified)

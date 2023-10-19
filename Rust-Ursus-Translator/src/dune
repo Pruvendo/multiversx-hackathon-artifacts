@@ -1,0 +1,6 @@
+(coq.theory
+ (name Translator)
+ (package rust-ursus-translator) 
+)
+
+(include_subdirs qualified)

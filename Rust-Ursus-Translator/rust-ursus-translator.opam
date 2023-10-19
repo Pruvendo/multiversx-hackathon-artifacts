@@ -1,0 +1,29 @@
+synopsis:     "Rust->Ursus Translator"
+description:  "Rust->Ursus Translator"
+name:         "rust-ursus-translator"
+opam-version: "2.0"
+maintainer:   "team@pruvendo.com"
+authors:      "Pruvendo Team"
+homepage:     "https://github.com/Pruvendo"
+bug-reports:  "https://github.com/Pruvendo"
+doc:          "https://github.com/Pruvendo"
+
+license:      "GPL-3.0-or-later"
+
+depends: [
+  "ocaml" {= "4.11.2" }
+  "ocaml-base-compiler" { = "4.11.2" } 
+  "Io"
+  "System" 
+  "coq" { = "8.15.2" }
+  "CoqJson"
+
+]
+tags: [
+  "keyword:effects"
+  "keyword:extraction"
+]
+build: 
+  [make "opam"]
+install:
+  ["install" "_build/default/main.native" "%{bin}%/rust_ursus_tr"]

@@ -1,0 +1,22 @@
+synopsis:     "rust-ursus"
+description:  "rust-ursus"
+name:         "rust-ursus"
+opam-version: "2.0"
+maintainer:   "team@pruvendo.com"
+authors:      "Pruvendo Team"
+homepage:     ""
+dev-repo:     ""
+bug-reports:  ""
+doc:          ""
+
+license:      "GPL-3.0-or-later"
+
+depends: [
+  "coq"           { >= "8.16.0" }
+  "dune"          { >= "2.8.0"  }
+  "pruvendo-base" 
+  "pruvendo-base-lib" 
+  "pruvendo-umlang" 
+]
+
+build: [ "dune" "build" "-p" name "-j" jobs ]

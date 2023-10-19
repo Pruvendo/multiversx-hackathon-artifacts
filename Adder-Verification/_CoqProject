@@ -1,0 +1,5 @@
+# Initial version generated with
+# { echo "-R . FinProof " ; find . -name "*.v" -print } > _CoqProject
+# coq_makefile -f _CoqProject -o Makefile.coq
+
+-R ./_build/default/src RustExample

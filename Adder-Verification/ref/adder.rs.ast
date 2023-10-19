@@ -1,0 +1,434 @@
+{
+    "attrs": [
+      {
+        "style": "inner",
+        "meta": {
+          "path": {
+            "segments": [
+              {
+                "ident": "no_std"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "items": [
+      {
+        "macro": {
+          "path": {
+            "segments": [
+              {
+                "ident": "multiversx_sc"
+              },
+              {
+                "ident": "imports"
+              }
+            ]
+          },
+          "delimiter": "paren",
+          "tokens": [],
+          "semi_token": true
+        }
+      },
+      {
+        "trait": {
+          "attrs": [
+            {
+              "style": "outer",
+              "meta": {
+                "name_value": {
+                  "path": {
+                    "segments": [
+                      {
+                        "ident": "doc"
+                      }
+                    ]
+                  },
+                  "value": {
+                    "lit": {
+                      "str": "\" One of the simplest smart contracts possible,\""
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "style": "outer",
+              "meta": {
+                "name_value": {
+                  "path": {
+                    "segments": [
+                      {
+                        "ident": "doc"
+                      }
+                    ]
+                  },
+                  "value": {
+                    "lit": {
+                      "str": "\" it holds a single variable in storage, which anyone can increment.\""
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "style": "outer",
+              "meta": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "multiversx_sc"
+                    },
+                    {
+                      "ident": "contract"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "vis": "pub",
+          "ident": "Adder",
+          "items": [
+            {
+              "fn": {
+                "attrs": [
+                  {
+                    "style": "outer",
+                    "meta": {
+                      "list": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "view"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "ident": "getSum"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "style": "outer",
+                    "meta": {
+                      "list": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "storage_mapper"
+                            }
+                          ]
+                        },
+                        "delimiter": "paren",
+                        "tokens": [
+                          {
+                            "lit": "\"sum\""
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "ident": "sum",
+                "inputs": [
+                  {
+                    "receiver": {
+                      "ref": true,
+                      "ty": {
+                        "reference": {
+                          "elem": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "Self"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "output": {
+                  "path": {
+                    "segments": [
+                      {
+                        "ident": "SingleValueMapper",
+                        "arguments": {
+                          "angle_bracketed": {
+                            "args": [
+                              {
+                                "type": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "BigUint"
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "fn": {
+                "attrs": [
+                  {
+                    "style": "outer",
+                    "meta": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "init"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "ident": "init",
+                "inputs": [
+                  {
+                    "receiver": {
+                      "ref": true,
+                      "ty": {
+                        "reference": {
+                          "elem": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "Self"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "typed": {
+                      "pat": {
+                        "ident": {
+                          "ident": "initial_value"
+                        }
+                      },
+                      "ty": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "BigUint"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                ],
+                "output": null,
+                "default": [
+                  {
+                    "expr": [
+                      {
+                        "method_call": {
+                          "receiver": {
+                            "method_call": {
+                              "receiver": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "self"
+                                    }
+                                  ]
+                                }
+                              },
+                              "method": "sum",
+                              "args": []
+                            }
+                          },
+                          "method": "set",
+                          "args": [
+                            {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "initial_value"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      true
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "fn": {
+                "attrs": [
+                  {
+                    "style": "outer",
+                    "meta": {
+                      "name_value": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "doc"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "lit": {
+                            "str": "\" Add desired amount to the storage variable.\""
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "style": "outer",
+                    "meta": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "endpoint"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "ident": "add",
+                "inputs": [
+                  {
+                    "receiver": {
+                      "ref": true,
+                      "ty": {
+                        "reference": {
+                          "elem": {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "Self"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "typed": {
+                      "pat": {
+                        "ident": {
+                          "ident": "value"
+                        }
+                      },
+                      "ty": {
+                        "path": {
+                          "segments": [
+                            {
+                              "ident": "BigUint"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                ],
+                "output": null,
+                "default": [
+                  {
+                    "expr": [
+                      {
+                        "method_call": {
+                          "receiver": {
+                            "method_call": {
+                              "receiver": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "self"
+                                    }
+                                  ]
+                                }
+                              },
+                              "method": "sum",
+                              "args": []
+                            }
+                          },
+                          "method": "update",
+                          "args": [
+                            {
+                              "closure": {
+                                "inputs": [
+                                  {
+                                    "ident": {
+                                      "ident": "sum"
+                                    }
+                                  }
+                                ],
+                                "output": null,
+                                "body": {
+                                  "binary": {
+                                    "left": {
+                                      "unary": {
+                                        "op": "*",
+                                        "expr": {
+                                          "path": {
+                                            "segments": [
+                                              {
+                                                "ident": "sum"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "op": "+=",
+                                    "right": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "value"
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      true
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+  
